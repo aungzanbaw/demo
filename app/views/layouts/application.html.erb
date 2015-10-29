@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	  <title>Demo</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	  <%= csrf_meta_tags %>
-	</head>
-	<body>
-		<%= render 'layouts/header' %>
-		<%= yield %>
-		<%= render 'layouts/footer' %>
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Social Hive" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="row">
+      <div class="large-9 columns" role="content">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/aside' %>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
 </html>
